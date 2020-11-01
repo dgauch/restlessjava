@@ -12,7 +12,7 @@ public class CpuBurner {
     }
 
     public static int burnCold(int timeInMs) {
-        if (timeInMs == 0)
+        if (timeInMs <= 0)
             return 0;
         try {
             Thread.sleep(timeInMs);
@@ -23,9 +23,26 @@ public class CpuBurner {
         return timeInMs;
     }
 
+    public static int burnHot(int timeInMs) {
+        if (timeInMs <= 0)
+            return 0;
+
+        long started = System.currentTimeMillis();
+        long endTime = started + timeInMs;
+        while (System.currentTimeMillis() < endTime);
+        return (int)(System.currentTimeMillis() - started);
+    }
+
     public static int burnCold(int minTimeInMs, int maxTimeInMs) {
-        int timeInMs = (minTimeInMs == maxTimeInMs) ? minTimeInMs
+        return burnCold(randmonMinMax(minTimeInMs, maxTimeInMs));
+    }
+
+    public static int burnHot(int minTimeInMs, int maxTimeInMs) {
+        return burnHot(randmonMinMax(minTimeInMs, maxTimeInMs));
+    }
+
+    private static int randmonMinMax(int minTimeInMs, int maxTimeInMs) {
+        return (minTimeInMs == maxTimeInMs) ? minTimeInMs
                 : minTimeInMs + new Random().nextInt(maxTimeInMs - minTimeInMs);
-        return burnCold(timeInMs);
     }
 }
