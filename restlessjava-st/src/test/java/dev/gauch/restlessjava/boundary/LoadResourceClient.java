@@ -10,6 +10,20 @@ public interface LoadResourceClient {
 
     @GET
     @Path("burn-cold")
-    Response burnCold(@QueryParam("min") Integer min, @QueryParam("max") Integer max);
+    Response burnCold(
+        @QueryParam("min") Integer min, 
+        @QueryParam("max") Integer max,
+        @QueryParam("minThreads") Integer minThreads, 
+        @QueryParam("maxThreads") Integer maxThreads
+    );
+    
+    @GET
+    @Path("burn-hot")
+    Response burnHot(
+        @QueryParam("min") Integer min, 
+        @QueryParam("max") Integer max,
+        @QueryParam("minThreads") Integer minThreads, 
+        @QueryParam("maxThreads") Integer maxThreads
+    );
     
 }
