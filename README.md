@@ -10,6 +10,8 @@ Provides REST APIs to produce some load. A common use case is to use multiple co
 
 ## Use it 
 
+Use MP health check to see whether the server is already up and running: http://localhost:9990/health.
+
 Burn cold (i.e. threads go sleeping while waiting)
 ```bash
 curl --head 'localhost:8080/restlessjava/api/load/burn-cold?minThreads=1&maxThreads=4&min=100&max=1000'
