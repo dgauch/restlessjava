@@ -22,6 +22,22 @@ Burn hot (i.e. threads will stay active)
 curl --head 'localhost:8080/restlessjava/api/load/burn-hot?minThreads=1&maxThreads=4&min=100&max=1000'
 ```
 
+Get some memory statistics
+```bash
+curl 'localhost:8080/restlessjava/api/memory/stats'
+```
+Returned values are in Mib.
+
+Consume some memory
+```bash
+curl -X POST 'localhost:8080/restlessjava/api/memory?amount-int=10000'
+```
+
+Trigger garbage collection (GC)
+```bash
+curl -X POST 'localhost:8080/restlessjava/api/memory/gc'
+```
+
 ## Tests
 
 Make sure that a server is running at http://localhost:8080.

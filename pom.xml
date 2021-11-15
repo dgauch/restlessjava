@@ -9,5 +9,6 @@
   <modules>
     <module>restlessjava</module>
     <module>restlessjava-st</module>
+    <module>restlessjava-cmd</module>
   </modules>
 </project>
